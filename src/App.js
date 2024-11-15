@@ -4,11 +4,13 @@ import { configureStore } from "@reduxjs/toolkit";
 import Home from "./components/Home";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import UserReducer from "./UserReducer"
+import Edit from "./components/Edit";
 
 function App() {
   const store = configureStore({
     reducer: {
-      type: "user",
+      userss:UserReducer
     },
   });
   return (
@@ -17,6 +19,7 @@ function App() {
         <div className="App">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/edit/:id" element={<Edit/>}/>
           </Routes>
         </div>
       </BrowserRouter>

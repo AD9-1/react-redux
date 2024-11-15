@@ -6,3 +6,4 @@ const userList = [
   { id: 5, name: "David", age: 27 },
   { id: 6, name: "Emma", age: 32 },
 ];
+export default userList;
