@@ -7,10 +7,8 @@ export const userSlice = createSlice({
   reducers: {
     addUser: (state, action) => {
       state.push(action.payload);
-      console.log("state", state);
     },
     updateUser: (state, action) => {
-      console.log("updateUser", action.payload);
       const Euser = state.find((item) => item.id === action.payload.id);
       console.log("Euser", Euser);
       if (Euser) {
