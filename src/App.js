@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import UserReducer from "./UserReducer"
 import Edit from "./components/Edit";
+import Create from "./components/Create";
 
 function App() {
   const store = configureStore({
@@ -19,6 +20,7 @@ function App() {
         <div className="App">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/create" element={<Create/>} />
             <Route path="/edit/:id" element={<Edit/>}/>
           </Routes>
         </div>

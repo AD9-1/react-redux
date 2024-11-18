@@ -1,18 +1,25 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { userSlice } from "../UserReducer";
 
 const Home = () => {
+  const dispatch = useDispatch();
   const users = useSelector((state) => {
     return state.userss;
   });
 
+const handleClick=(id)=>{
+  const userA=users.find(user => user.id === id);
+dispatch(userSlice.actions.deleteUser({id: id,name:userA.name,age:userA.age}))
+}
   return (
     <div className="container">
       <h2>Welcome to the list of Users</h2>
-      <button type="button" class="btn btn-primary mb-3 mt-4">
+      <Link to="/create" className="btn btn-primary mb-3 mt-4">
         Add User
-      </button>
-      <table class="table table-striped">
+      </Link>
+      <table className="table table-striped">
         <thead>
           <tr>
             <th>id</th>
@@ -33,7 +40,7 @@ const Home = () => {
                   <button className="btn-sm btn btn-primary">Edit</button>
                 </Link>
           
-                  <button className="btn btn-sm btn-danger ms-2">Delete</button>
+                  <button onClick={()=>handleClick(user.id)} className="btn btn-sm btn-danger ms-2">Delete</button>
             
               </td>
             </tr>
